@@ -22,7 +22,7 @@ class ProductService(remote.Service):
         return product
 
     @Product.method(request_fields=('id',), path='/product/{id}',
-                    http_method='GET', name='product.get')
+                    http_method='GET', name='product.get_product')
     def get_product(self, product):
         """Get a product with the given id."""
         if not product.from_datastore:
@@ -52,7 +52,7 @@ class ProductService(remote.Service):
 
     @Product.method(request_fields=('id',),
                     response_fields=('id',), path='/product/{id}',
-                    http_method='DELETE', name='product.delele')
+                    http_method='DELETE')
     def delete_product(self, product):
         """Delete an existent product with the given id and body."""
         if not product.from_datastore:

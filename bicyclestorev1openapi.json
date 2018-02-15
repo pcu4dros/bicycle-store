@@ -1,0 +1,373 @@
+{
+  "basePath": "/_ah/api",
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "Category": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int64",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Manufacturer": {
+      "properties": {
+        "contact": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int64",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Product": {
+      "properties": {
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "features": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "id": {
+          "format": "int64",
+          "type": "string"
+        },
+        "manufacturer": {
+          "$ref": "#/definitions/Manufacturer"
+        },
+        "model": {
+          "type": "string"
+        },
+        "photo": {
+          "type": "string"
+        },
+        "price": {
+          "format": "double",
+          "type": "number"
+        },
+        "specifications": {
+          "$ref": "#/definitions/Specifications"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        }
+      },
+      "required": [
+        "model"
+      ],
+      "type": "object"
+    },
+    "ProductCollection": {
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/Product"
+          },
+          "type": "array"
+        },
+        "nextPageToken": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ProductProtoId": {
+      "properties": {
+        "id": {
+          "format": "int64",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Specifications": {
+      "properties": {
+        "brakes": {
+          "type": "string"
+        },
+        "chain": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        },
+        "cranks": {
+          "type": "string"
+        },
+        "extras": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "fork": {
+          "type": "string"
+        },
+        "frame": {
+          "type": "string"
+        },
+        "front_hub": {
+          "type": "string"
+        },
+        "handlebar": {
+          "type": "string"
+        },
+        "headset": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int64",
+          "type": "string"
+        },
+        "pedals": {
+          "type": "string"
+        },
+        "rear_hub": {
+          "type": "string"
+        },
+        "rims": {
+          "type": "string"
+        },
+        "seat": {
+          "type": "string"
+        },
+        "size": {
+          "type": "string"
+        },
+        "spokes": {
+          "type": "string"
+        },
+        "stem": {
+          "type": "string"
+        },
+        "tires": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "Status": {
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "format": "int64",
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "bicycle-store-195204.appspot.com",
+  "info": {
+    "description": "Bikestore API",
+    "title": "bicyclestore",
+    "version": "v1"
+  },
+  "paths": {
+    "/bicyclestore/v1/product": {
+      "post": {
+        "operationId": "ProductService_insertProduct",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/bicyclestore/v1/product/{id}": {
+      "delete": {
+        "operationId": "ProductService_deleteProduct",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ProductProtoId"
+            }
+          },
+          {
+            "format": "int64",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductProtoId"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "ProductService_getProduct",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/ProductProtoId"
+            }
+          },
+          {
+            "format": "int64",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "ProductService_patchProduct",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          {
+            "format": "int64",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "ProductService_updateProduct",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          {
+            "format": "int64",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          }
+        }
+      }
+    },
+    "/bicyclestore/v1/products": {
+      "get": {
+        "operationId": "ProductService_listProducts",
+        "parameters": [
+          {
+            "format": "int64",
+            "in": "query",
+            "name": "limit",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "pageToken",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "schema": {
+              "$ref": "#/definitions/ProductCollection"
+            }
+          }
+        }
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "google_id_token": {
+      "authorizationUrl": "",
+      "flow": "implicit",
+      "type": "oauth2",
+      "x-google-issuer": "https://accounts.google.com",
+      "x-google-jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
+    }
+  },
+  "swagger": "2.0"
+}
