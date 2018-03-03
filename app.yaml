@@ -1,3 +1,4 @@
+application: bicycle-store
 runtime: python27
 threadsafe: true
 api_version: 1
