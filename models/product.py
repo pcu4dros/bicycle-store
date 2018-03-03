@@ -18,6 +18,7 @@ class Product(EndpointsModel):
     status = ndb.StructuredProperty(Status)
     specifications = ndb.StructuredProperty(Specifications)
     description = ndb.StringProperty()
+    short_description = ndb.StringProperty()
     price = ndb.FloatProperty()
     photo = ndb.StringProperty()
     features = ndb.StringProperty(repeated=True)
