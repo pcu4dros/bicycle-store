@@ -1,3 +1,4 @@
 google-endpoints==2.5.0
 google-endpoints-api-management==1.4.0
 google-cloud-datastore==1.4.0
+WebTest==2.0.30.dev0
