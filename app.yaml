@@ -1,5 +1,6 @@
 application: bicycle-store-195204
 runtime: python27
+version: 2
 threadsafe: true
 api_version: 1
 basic_scaling:
