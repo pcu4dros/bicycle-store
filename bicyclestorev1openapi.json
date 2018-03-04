@@ -48,6 +48,9 @@
         "description": {
           "type": "string"
         },
+        "short_description": {
+          "type": "string"
+        },
         "features": {
           "items": {
             "type": "string"
