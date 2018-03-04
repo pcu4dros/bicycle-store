@@ -11,6 +11,10 @@ handlers:
 - url: /_ah/api/.*
   script: register.application
 
+- url: /
+  static_files: index.html
+  upload: index.html
+
 libraries:
 - name: pycrypto
   version: 2.6
