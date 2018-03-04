@@ -57,7 +57,8 @@ class ProductTestCase(unittest.TestCase):
         body = {"model": "Diamondback Hook",
                 "photo": "/images/model/01/diamondback-hook.png",
                 "price": 500.3,
-                "description": "Diamondback the best Hook"}
+                "description": "Diamondback the best Hook",
+                "short_description": "Diamondback"}
         response = self.testapp.post_json('/_ah/api/bicyclestore/v1/product/',
                                           body)
 
@@ -66,6 +67,7 @@ class ProductTestCase(unittest.TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertEquals(data['model'], 'Diamondback Hook')
         self.assertEquals(data['description'], 'Diamondback the best Hook')
+        self.assertEquals(data['short_description'], 'Diamondback')
         self.assertEquals(data['price'], 500.3)
 
     def test_endpoint_update(self):
