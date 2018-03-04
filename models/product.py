@@ -10,8 +10,8 @@ from endpoints_proto_datastore.ndb import EndpointsModel
 class Product(EndpointsModel):
     _message_fields_schema = ('id', 'model', 'description', 'created_at',
                               'manufacturer', 'category',
-                              'status', 'description', 'specifications',
-                              'price', 'photo', 'features')
+                              'status', 'description', 'short_description',
+                              'specifications', 'price', 'photo', 'features')
     model = ndb.StringProperty(required=True)
     manufacturer = ndb.StructuredProperty(Manufacturer)
     category = ndb.StructuredProperty(Category)
