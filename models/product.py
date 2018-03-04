@@ -11,7 +11,8 @@ class Product(EndpointsModel):
     _message_fields_schema = ('id', 'model', 'description', 'created_at',
                               'manufacturer', 'category',
                               'status', 'description', 'short_description',
-                              'specifications', 'price', 'photo', 'features')
+                              'label', 'specifications', 'price', 'photo',
+                              'features')
     model = ndb.StringProperty(required=True)
     manufacturer = ndb.StructuredProperty(Manufacturer)
     category = ndb.StructuredProperty(Category)
@@ -19,6 +20,7 @@ class Product(EndpointsModel):
     specifications = ndb.StructuredProperty(Specifications)
     description = ndb.StringProperty()
     short_description = ndb.StringProperty()
+    label = ndb.StringProperty()
     price = ndb.FloatProperty()
     photo = ndb.StringProperty()
     features = ndb.StringProperty(repeated=True)
