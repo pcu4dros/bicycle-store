@@ -1,6 +1,6 @@
 application: bicycle-store-195204
 runtime: python27
-version: 2
+version: 20180303t221733
 threadsafe: true
 api_version: 1
 basic_scaling:
@@ -10,10 +10,6 @@ handlers:
 # The endpoints handler must be mapped to /_ah/api.
 - url: /_ah/api/.*
   script: register.application
-
-- url: /
-  static_files: index.html
-  upload: index.html
 
 libraries:
 - name: pycrypto
